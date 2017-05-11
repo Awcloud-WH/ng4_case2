@@ -1,22 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser'
-import { NgModule } from '@angular/core'
+import { NgModule, Component } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { PlayerComponent } from './player/player.component'
-import { TeamComponent } from './team/team.component'
-import CommonComponents from './common/common.component'
+import * as PlayerComponents from './player/player.component'
+import * as TeamComponents from './team/team.component'
+import { NotFoundComponent } from './common/common.component'
 import { TeamService } from './team.service'
-
-console.log(CommonComponents)
-
 @NgModule({
 	declarations: [
 		AppComponent,
-		PlayerComponent,
-		TeamComponent
+		...Object.keys(PlayerComponents).map(key => PlayerComponents[key]).filter(component => typeof component === 'function'),
+		...Object.keys(TeamComponents).map(key => TeamComponents[key]).filter(component => typeof component === 'function'),
+		NotFoundComponent
 	],
 	imports: [
 		BrowserModule,

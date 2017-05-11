@@ -16,7 +16,7 @@
     "import-spacing": true,
     "indent": [
       true,
-      "spaces"
+      "tab"
     ],
     "interface-over-type-literal": true,
     "label-position": true,
@@ -70,7 +70,7 @@
     ],
     "radix": true,
     "semicolon": [
-      "always"
+      false
     ],
     "triple-equals": [
       true,

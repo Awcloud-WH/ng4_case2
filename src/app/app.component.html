@@ -1,12 +1,13 @@
-<h1>
-	{{title}}
-</h1>
-<section>
-	<nav>
-		<a *ngFor="let team of teams"
-			routerLinkActive="active"
-			routerLink="/team/{{ team.id }}">{{ team.name }}</a>
-	</nav>
-	<router-outlet></router-outlet>
-	<router-outlet name="player"></router-outlet>
-</section>
+<h1>{{title}}</h1>
+<nav>
+	<a routerLink="/player">全部玩家</a>
+	<a routerLink="/team">全部队伍</a>
+</nav>
+<table width="100%" border="1">
+	<tbody>
+		<tr>
+			<td><router-outlet></router-outlet></td>
+		</tr>
+	</tbody>
+</table>
+

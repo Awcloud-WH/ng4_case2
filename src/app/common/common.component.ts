@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'not-found-common',
-  template: `404 page`,
-  styleUrls: ['./common.component.css']
+	selector: 'my-app-not-found-component',
+	template: `404 page`,
+	styleUrls: ['./common.component.css']
 })
-class NotFoundComponent implements OnInit {
+export class NotFoundComponent implements OnInit {
 
-  constructor() { }
+	constructor() { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
 }
-
-export default [
-  NotFoundComponent
-]

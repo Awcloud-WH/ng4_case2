@@ -5,10 +5,13 @@ section{
 section > nav{
 	padding: 4px 8px;
 }
-nav > a{
+section > nav > a{
 	display: block;
 	padding: 4px 8px;
 }
 nav > a:hover, nav > a.active{
 	background: #666;
+}
+td{
+	vertical-align: top;
 }

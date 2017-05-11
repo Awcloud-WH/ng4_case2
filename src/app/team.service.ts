@@ -1,40 +1,36 @@
 import 'rxjs/add/operator/toPromise'
 import 'rxjs/add/operator/filter'
+import 'rxjs/add/operator/map'
+
 import { Injectable } from '@angular/core'
 import { Headers, Http } from '@angular/http'
 import { Team } from './team'
-
-
-let players = Array(1000).fill(0).map((c, i) => {
-	return {
-		id: i,
-		name: `玩家${ i }`,
-		teamid: Math.floor(20 * Math.random())
-	}
-})
-
-let teams = Array(20).fill(0).map((c, i) => {
-	return {
-		id: i,
-		name: `队伍${ i }`,
-		players: players.filter(player => player.teamid === i)
-	}
-})
+import { Player } from './player'
 
 @Injectable()
 export class TeamService {
-	query(index: number): Promise<Team[]>{
-		return Promise.resolve(teams.slice(index * 5, (index + 1) * 5))
+	constructor(
+		private http: Http
+	){
+		console.log(http)
+	}
+	query(): Promise<Team[]>{
+		return this.http.get('/assets/teams.json')
+			.toPromise()
+			.then(response => {
+				return response.json() as Team[]
+			})
+	}
+	queryPlayers(): Promise<Player[]>{
+		return this.query()
+			.then(teams => [].concat(...teams.map(team => team.players)))
 	}
 	get(id: number){
-		console.log(id)
-		let t = teams.filter(team => {
-			//console.log(team, id, team.id)
-			return team.id === id
-		})
-		return Promise.resolve(t[0])
+		return this.query()
+			.then(teams => teams.find(team => team.id === id))
 	}
 	getPlayer(id: number){
-		return Promise.resolve(players.filter(player => player.id === id)[0])
+		return this.queryPlayers()
+			.then(players => players.find(player => player.id === id))
 	}
 }

@@ -16,9 +16,8 @@ export class AppComponent implements OnInit {
 		private route: ActivatedRoute
 	){}
 	ngOnInit(){
-		this.teamService.query(0).then(teams => this.teams = teams)
-		//	.then(teams => this.teams = teams)
-		// this.route.queryParams.map(() => )
-		// 	.subscribe(teams => this.teams = teams)
+		this.teamService.query().then(teams => {
+			this.teams = teams
+		})
 	}
 }

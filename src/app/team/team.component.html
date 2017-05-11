@@ -1,11 +1,11 @@
 <section>
-	<div *ngIf="team">
-		<h4>team {{ team.name }}!</h4>
-		<ul>
-			<li *ngFor="let player of team.players">
-				<a routerLink="player/{{ player.id }}">{{ player.name }}</a>
-			</li>
-		</ul>
-	</div>
+	<a routerLink="..">&lt; 返回列表</a> 
 	<router-outlet></router-outlet>
+	<div *ngIf="team">
+		<h4> team {{ team.name }}!</h4>
+		<span *ngFor="let player of team.players">
+			<a routerLink="/player/{{ player.id }}">/</a>
+			<a routerLink="player/{{ player.id }}" routerLinkActive="active">{{ player.name }}</a>
+		</span>
+	</div>
 </section>
