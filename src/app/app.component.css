@@ -1,0 +1,14 @@
+section{
+	display: flex;
+	background: #eee;
+}
+section > nav{
+	padding: 4px 8px;
+}
+nav > a{
+	display: block;
+	padding: 4px 8px;
+}
+nav > a:hover, nav > a.active{
+	background: #666;
+}
