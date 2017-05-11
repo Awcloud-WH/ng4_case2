@@ -5,15 +5,15 @@ import { HttpModule } from '@angular/http'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import * as PlayerComponents from './player/player.component'
-import * as TeamComponents from './team/team.component'
+import { PlayerComponent, PlayerListComponent } from './player/player.component'
+import { TeamComponent, TeamListComponent, TeamWithoutHttpComponent } from './team/team.component'
 import { NotFoundComponent } from './common/common.component'
 import { TeamService } from './team.service'
 @NgModule({
 	declarations: [
 		AppComponent,
-		...Object.keys(PlayerComponents).map(key => PlayerComponents[key]).filter(component => typeof component === 'function'),
-		...Object.keys(TeamComponents).map(key => TeamComponents[key]).filter(component => typeof component === 'function'),
+		PlayerComponent, PlayerListComponent,
+		TeamComponent, TeamListComponent, TeamWithoutHttpComponent,
 		NotFoundComponent
 	],
 	imports: [
